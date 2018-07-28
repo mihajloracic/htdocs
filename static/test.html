@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Angular Custom Select</title>
+
+    <meta name="description" content="overview &amp; stats" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- basic styles -->
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" />
+
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome-ie7.min.css" />
+    <![endif]-->
+
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body ng-app="Demo" ng-controller="DemoController">
+<div custom-select="f for f in fruits | filter: $searchTerm" ng-model="fruit" autofocus></div>
+
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- <![endif]-->
+
+
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="js/angular.js"></script>
+<script src="js/app.js"></script>
+<script src="js/customSelect.js"></script>
+<script>
+    (function () {
+        var app = angular.module('Demo', ['AxelSoft']);
+        app.controller('DemoController', function($scope, $http, $rootScope) {
+            $scope.fruits = ['apple', 'orange', 'mango', 'grapefruit', 'banana', 'melon'];
+        });
+
+
+    })();
+</script>
+</body>
+</html>

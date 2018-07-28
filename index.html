@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/customSelectStyle.css">
+    <script src="js/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body ng-app="myApp">
+<div ng-include="'fragments/navbar.htm'"></div>
+<div class="container"  ng-controller="customeCtrl">
+    <div custom-select="a for a in searchAsync($searchTerm)"  custom-select-options="{ 'async': true }" ng-model="pretragaRec"></div>
+    <ul ng-repeat="a in respData | limitTo : 4">
+        <li>{{a.BrUgovora}}</li>
+        <li>{{a.SifKomint}}</li>
+    </ul>
+    {{pretragaRec}}
+</div>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/angular.js"></script>
+<script src="js/customSelect.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/navbar.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+    app.controller('customeCtrl', function($scope, $http, $rootScope, $q, $timeout) {
+        $scope.searchAsync = function (term) {
+            var deferred = $q.defer();
+            $timeout(function () {
+                var url = '"http://localhost:8091/customSearchRequest?param1=' + encodeURIComponent(term);
+
+
+                deferred.resolve(result);
+                console.log(result)
+            }, 1500);
+            return deferred.promise;
+        };
+
+    });
+</script>
+</body>
+</html>
